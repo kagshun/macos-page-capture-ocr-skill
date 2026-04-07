@@ -1,0 +1,31 @@
+name: Validate
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Compile AppleScript
+        run: |
+          osacompile \
+            -o /tmp/capture-pages-test.scpt \
+            skill/macos-page-capture-ocr/scripts/capture_paginated_content.applescript
+
+      - name: Check shell wrapper syntax
+        run: |
+          zsh -n skill/macos-page-capture-ocr/scripts/process_captured_pages.sh
+
+      - name: Typecheck Swift scripts
+        run: |
+          mkdir -p .cache
+          swiftc -module-cache-path .cache -typecheck skill/macos-page-capture-ocr/scripts/images_to_pdf.swift
+          swiftc -module-cache-path .cache -typecheck skill/macos-page-capture-ocr/scripts/ocr_images.swift

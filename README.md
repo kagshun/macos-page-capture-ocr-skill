@@ -1,5 +1,7 @@
 # macOS Page Capture OCR Skill
 
+[![Validate](https://github.com/kagshun/macos-page-capture-ocr-skill/actions/workflows/validate.yml/badge.svg)](https://github.com/kagshun/macos-page-capture-ocr-skill/actions/workflows/validate.yml)
+
 macOS 上で、ページ送りできるアプリの画面を連番スクリーンショットとして保存し、その画像群から PDF と OCR テキストを作るための Codex スキルです。
 
 This repository packages a reusable macOS workflow for:
@@ -27,6 +29,13 @@ The original workflow relied on:
 That works, but it is harder to share because the Shortcuts piece is not easy to version, diff, or publish.
 
 This repo keeps the proven AppleScript capture approach and replaces the OCR/PDF stages with small Swift scripts so the whole workflow is text-based and repository-friendly.
+
+## Requirements
+
+- macOS
+- AppleScript / Script Editor
+- Swift runtime included with macOS
+- Accessibility and Screen Recording permissions for the app that runs the capture script
 
 ## Repository layout
 
@@ -124,6 +133,15 @@ Once installed, invoke it as:
 ```text
 $macos-page-capture-ocr
 ```
+
+## GitHub setup suggestions
+
+If you want the repository page to look polished, these values work well in GitHub's `About` box.
+
+- Description:
+  `Capture paginated macOS app screens into ordered images, then export PDF and OCR text with built-in Apple technologies.`
+- Topics:
+  `macos`, `applescript`, `ocr`, `pdf`, `vision`, `pdfkit`, `automation`, `codex-skill`
 
 ## Legal and practical note
 
