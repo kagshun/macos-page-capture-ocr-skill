@@ -1,0 +1,7 @@
+interface:
+  display_name: "macOS Page Capture OCR"
+  short_description: "macOSの画面キャプチャとOCRを一気通貫で扱う"
+  default_prompt: "Use $macos-page-capture-ocr to build or improve a macOS page capture and OCR workflow."
+
+policy:
+  allow_implicit_invocation: true
