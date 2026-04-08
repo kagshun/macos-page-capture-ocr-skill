@@ -47,9 +47,12 @@ macos-page-capture-ocr-skill/
     └── macos-page-capture-ocr/
         ├── SKILL.md
         ├── agents/openai.yaml
-        ├── references/macos-setup.md
+        ├── references/
+        │   ├── kindle-local-example.md
+        │   └── macos-setup.md
         └── scripts/
             ├── capture_paginated_content.applescript
+            ├── capture_kindle_local_example.applescript
             ├── images_to_pdf.swift
             ├── ocr_images.swift
             └── process_captured_pages.sh
@@ -78,6 +81,11 @@ See [skill/macos-page-capture-ocr/references/macos-setup.md](skill/macos-page-ca
 Edit:
 
 - [capture_paginated_content.applescript](skill/macos-page-capture-ocr/scripts/capture_paginated_content.applescript)
+
+If you want a concrete Kindle-oriented local example first, start from:
+
+- [capture_kindle_local_example.applescript](skill/macos-page-capture-ocr/scripts/capture_kindle_local_example.applescript)
+- [kindle-local-example.md](skill/macos-page-capture-ocr/references/kindle-local-example.md)
 
 The main settings are:
 
@@ -108,6 +116,12 @@ Then either run it in Script Editor or compile it:
 
 ```bash
 osacompile -o capture-pages.scpt skill/macos-page-capture-ocr/scripts/capture_paginated_content.applescript
+```
+
+For the Kindle example file:
+
+```bash
+osacompile -o capture-kindle-local.scpt skill/macos-page-capture-ocr/scripts/capture_kindle_local_example.applescript
 ```
 
 ### 3. Export PDF and OCR text
