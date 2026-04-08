@@ -99,12 +99,20 @@ The main settings are:
 - `resizeWidth`
 - `outputFolderPosix`
 
+Important:
+
+- `startPage` is an output filename index, not an in-app page jump feature.
+- `pages` is the inclusive end index for the capture loop.
+- If you want to start from a specific page in the app, move the app there yourself before running the script.
+
 For clarity:
 
 - `pageDirection = 1` means the script sends Left Arrow to move forward
 - `pageDirection = 2` means the script sends Right Arrow to move forward
 
 That naming is deliberate, because labels like `左めくり` and `右めくり` are easy to confuse with the arrow key that actually advances the page.
+
+The script captures first and advances second. It does not send an extra page-turn after the final captured image.
 
 Set `outputFolderPosix` to an absolute folder path such as:
 

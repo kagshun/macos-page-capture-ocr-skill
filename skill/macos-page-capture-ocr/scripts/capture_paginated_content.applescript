@@ -20,6 +20,9 @@ set filePrefix to "page"
 set outputFolderPosix to "/Users/your-username/Desktop/PageCapture"
 
 -- Important:
+-- pages is the inclusive end index for output filenames.
+-- startPage is the starting index for output filenames.
+-- The script does not jump the app to startPage for you.
 -- pageDirection refers to the arrow key sent to advance to the next page.
 -- It does not try to encode whether a book is "left-opening" or "right-opening".
 
@@ -53,11 +56,13 @@ repeat with currentPage from startPage to pages
 			end if
 	end if
 
-	tell application "System Events"
-		key code pageKeyCode
-	end tell
-
-	delay pauseTime
+	if currentPage is not pages then
+		tell application "System Events"
+			key code pageKeyCode
+		end tell
+		
+		delay pauseTime
+	end if
 end repeat
 
 on paddedIndex(pageNumber)

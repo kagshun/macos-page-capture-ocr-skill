@@ -56,6 +56,12 @@ Treat `pageDirection` as an explicit key mapping, not as a book-binding label:
 - `1` means send the Left Arrow key
 - `2` means send the Right Arrow key
 
+Be explicit about `startPage`:
+
+- it controls the starting output index in the filename sequence,
+- it does not navigate the app to that page number,
+- `pages` is the inclusive end index for the loop.
+
 ### 2. Prepare macOS permissions
 
 Before running the capture script, make sure the host app has:
@@ -76,7 +82,8 @@ Preferred pattern:
 - use `key code 123` for left and `124` for right,
 - use `screencapture -x` so the workflow stays quiet,
 - create the output directory automatically,
-- only crop or resize when the values are non-zero.
+- only crop or resize when the values are non-zero,
+- do not send an extra page-turn after the final capture.
 
 Compile to `.scpt` when the user wants a double-clickable artifact:
 

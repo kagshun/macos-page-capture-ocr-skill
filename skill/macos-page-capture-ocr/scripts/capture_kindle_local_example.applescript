@@ -18,6 +18,10 @@ set startPage to 1
 -- 2 = send Right Arrow
 set pageDirection to 2
 
+-- pages is the inclusive end index for output filenames.
+-- startPage is the starting index for output filenames.
+-- The script does not navigate the Kindle app to that page number for you.
+
 set pauseTime to 1.0
 set cropWidth to 0
 set cropHeight to 0
@@ -55,11 +59,13 @@ repeat with currentPage from startPage to pages
 		end if
 	end if
 
-	tell application "System Events"
-		key code pageKeyCode
-	end tell
-
-	delay pauseTime
+	if currentPage is not pages then
+		tell application "System Events"
+			key code pageKeyCode
+		end tell
+		
+		delay pauseTime
+	end if
 end repeat
 
 on paddedIndex(pageNumber)

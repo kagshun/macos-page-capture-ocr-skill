@@ -13,6 +13,12 @@ Use it as a local configuration example, not as the repository's default workflo
 - `filePrefix = "page"`
 - `outputFolderPosix = "/Users/your-username/Desktop/KindlePageCapture"`
 
+Meaning of the page counters:
+
+- `startPage` is the starting filename index.
+- `pages` is the inclusive ending filename index.
+- neither setting makes the Kindle app jump to that page number automatically.
+
 ## Forward-page key
 
 The important setting is not `左めくり` or `右めくり` as a label.
