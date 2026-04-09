@@ -29,3 +29,8 @@ jobs:
           mkdir -p .cache
           swiftc -module-cache-path .cache -typecheck skill/macos-page-capture-ocr/scripts/images_to_pdf.swift
           swiftc -module-cache-path .cache -typecheck skill/macos-page-capture-ocr/scripts/ocr_images.swift
+
+      - name: Run OCR and PDF integration test
+        run: |
+          chmod +x tests/integration_test.sh
+          zsh tests/integration_test.sh

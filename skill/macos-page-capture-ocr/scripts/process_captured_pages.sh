@@ -26,8 +26,14 @@ mkdir -p "$output_dir"
 pdf_output="$output_dir/$base_name.pdf"
 txt_output="$output_dir/$base_name.txt"
 
-swift "$script_dir/images_to_pdf.swift" "$input_dir" --output "$pdf_output"
-swift "$script_dir/ocr_images.swift" "$input_dir" --output "$txt_output" --languages "$languages"
+swift_cmd=(swift)
+if [[ -n "${SWIFT_MODULE_CACHE_PATH:-}" ]]; then
+  mkdir -p "$SWIFT_MODULE_CACHE_PATH"
+  swift_cmd+=( -module-cache-path "$SWIFT_MODULE_CACHE_PATH" )
+fi
+
+"${swift_cmd[@]}" "$script_dir/images_to_pdf.swift" "$input_dir" --output "$pdf_output"
+"${swift_cmd[@]}" "$script_dir/ocr_images.swift" "$input_dir" --output "$txt_output" --languages "$languages"
 
 printf 'PDF: %s\n' "$pdf_output"
 printf 'TXT: %s\n' "$txt_output"
